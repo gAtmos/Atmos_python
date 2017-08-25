@@ -7,15 +7,15 @@ it has been developped with an open source aspect, allowing people to provide mo
 - ###### A basic on / off controller, allowing the use of any on / off machine like : 
   - Pump, Mist machine, Light bulb, UV light, heating wire, heating plate, peltier module
   
-- ###### A SW2801 controller without led limit and few functionnalities
-  - plain color
-  - repeating sample for the whole strip
-  - set individual led color
-  - basic animation system (accuracy to the seconds)
+- ###### A more advanced controller allowing the use to PWR to control intensity of some devices :
+  - Control the light intensity, fan intensity, heating wire intensity, etc ...
+  - Basic animation system (accuracy to the seconds)
   
-- ###### A Three wire Fan controller with few functionnalities
-  - fan speed controller (0% -> 100%)
-  - basic animation system (accuracy to the seconds)
+- ###### A SW2801 controller without led limit and few functionnalities
+  - Plain color
+  - Repeating sample for the whole strip
+  - Set individual led color
+  - Basic animation system (accuracy to the seconds)
 
 ## Fast Doc
 Atmos is divided in three parts
@@ -24,8 +24,8 @@ Atmos is divided in three parts
   
   - Check for errors in the settings file
   - Launch controller that doesn't have any error
-  - execute all differents system commands
-  - control the GPIO of the computer board
+  - Execute all differents system commands
+  - Control the GPIO of the computer board
 
 - ### The controllers
   Controllers are threads executed along the Core and in charge of following the timer list provide by the settings file. Those timers are independant for each controllers and must follow few rules (explain in rules section).
@@ -49,7 +49,7 @@ Atmos is divided in three parts
   - The `rules` representing the maximum number of second the devices can run in a row and the minimum seconds it needs to rest/cool down.
   - The `mapping` representing the pin(s) used by the device
   - The `timers` reprensenting a list of timer that define the running period of the device during a day
-    the timer must have at least on entry that have at least two entries :
+    The timer must have at least on entry that have at least two entries :
     - `on` following by a date hh:mm:ss
     - `off` following by a date hh:mm:ss
     
@@ -61,3 +61,8 @@ Atmos is divided in three parts
     - **cold** to control two peltier module
     - **light** to control a WS2801 60 leds strip
     - **wind** to control two three wired fan (fan speed control)
+    
+# TO DO
+- [ ] A WS281x controller for more advanced strip led
+- [ ] A easiest way for user to set their system
+- [ ] Add animation feature for PWM devices
